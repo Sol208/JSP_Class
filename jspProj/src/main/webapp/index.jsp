@@ -65,5 +65,11 @@
 <h2>useBean</h2>
 <a href="useBean/bean.jsp?pid=qaz&age=27&marriage=true&tel=1234567">bean</a>
 <a href="useBean/joinform.jsp">joinform</a>
+<h2>dbcp</h2>
+<a href="dbcp/memberList.jsp">memberList</a>
+<h2>jstl</h2>
+<a href="jstl/el.jsp?pid=qaz&age=27&marriage=true&tel=1234567">el</a>
+<a href="jstl/exam.jsp?pid=asdf&kor=78&eng=79&mat=72">exam</a>
+<a href="jstl/set_if.jsp">set_if</a>
 </body>
 </html>

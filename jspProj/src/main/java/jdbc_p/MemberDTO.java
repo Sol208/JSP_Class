@@ -101,6 +101,10 @@ public class MemberDTO {
       return 0;
    }
    
+   public String getNickname() {
+	   return "김강규만세";
+   }
+   
    @Override
    public String toString() {
       return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", age=" + age
