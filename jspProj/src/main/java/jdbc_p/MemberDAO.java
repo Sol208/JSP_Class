@@ -64,8 +64,8 @@ public class MemberDAO {
 	public int insert(MemberDTO dto) {
 		int res = 0;
 		sql = "INSERT INTO member "
-				+ "(pid, pname, pw, age, marriage, reg_date)  VALUES " 
-				+ "(?, ?, ?, ?, ?,SYSDATE())";
+				+ "(pid, pname, pw, age, marriage, reg_date, pic, myff)  VALUES " 
+				+ "(?, ?, ?, ?, ?,SYSDATE(),?,?)";
 		
 		System.out.println(sql);
 		
@@ -76,6 +76,8 @@ public class MemberDAO {
 			stmt.setString(3, dto.getPw());
 			stmt.setInt(4, dto.getAge());
 			stmt.setInt(5, dto.getMarriageInt());
+			stmt.setString(6, dto.getPic());
+			stmt.setString(7, dto.getMyff());
 			res = stmt.executeUpdate();
 			
 		} catch (Exception e) {

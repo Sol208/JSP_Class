@@ -122,6 +122,38 @@ public class DBCP_DAO {
 		return res;
 	}
 	
+	public MemberDTO detailId(String pid) {
+		MemberDTO res = null;
+		
+		//sql = "SELECT * FROM member WHERE pid = '"+dto.pid+"' and pw = '"+dto.pw+"'";
+		sql = "SELECT * FROM member WHERE pid = ?";
+		System.out.println(sql);
+		
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, pid);
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				res = new MemberDTO();
+				
+				res.setPid(rs.getString("pid"));
+				res.setPname(rs.getString("pname"));
+				res.setAge(rs.getInt("age"));
+				res.setMarriage(rs.getInt("marriage"));
+				res.setReg_Date(rs.getTimestamp("reg_date"));
+				System.out.println(res);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return res;
+	}
+	
 	public void close() {
 		if (rs!=null) {try { rs.close(); } catch (SQLException e) {e.printStackTrace();}}
 		if (stmt!=null) { try { stmt.close(); } catch (SQLException e) {e.printStackTrace();}}

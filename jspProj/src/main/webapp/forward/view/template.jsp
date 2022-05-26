@@ -4,13 +4,13 @@
 	String main=(String)request.getAttribute("main");
 
 	String mainURL = "main/"+main+".jsp";
-%>
+%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/forward.css" />
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/forward.css" />
 </head>
 <body>
 <header>
