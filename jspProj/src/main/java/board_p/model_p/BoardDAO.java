@@ -100,6 +100,68 @@ public class BoardDAO {
 		}
 	}
 	
+	public void insert(BoardDTO dto){
+		sql = "insert into board (title, pname, pw, content, upfile, cnt, reg_date) values"
+				+"(?, ?, ?, ?, ?, 0, sysdate())";
+		
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			
+			ptmt.setString(1,dto.getTitle());
+			ptmt.setString(2,dto.getPname());
+			ptmt.setString(3,dto.getPw());
+			ptmt.setString(4,dto.getContent());
+			ptmt.setString(5,dto.getUpfile());
+			
+			ptmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	public int modify(BoardDTO dto){
+		int res = 0;
+		sql = "update board set title = ?, pname = ?, content = ? where id = ? and pw = ?";
+		
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			ptmt.setString(1,dto.getTitle());
+			ptmt.setString(2,dto.getPname());
+			ptmt.setString(3,dto.getContent());
+			ptmt.setInt(4,dto.getId());
+			ptmt.setString(5,dto.getPw());
+			
+			res = ptmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
+	
+	public int delete(BoardDTO dto){
+		int res = 0;
+		sql = "delete from board where id = ? and pw = ?";
+		
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1,dto.getId());
+			ptmt.setString(2,dto.getPw());
+			
+			res = ptmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
 	
 	public void close() {
 		if (rs!=null) {try { rs.close(); } catch (SQLException e) {e.printStackTrace();}}

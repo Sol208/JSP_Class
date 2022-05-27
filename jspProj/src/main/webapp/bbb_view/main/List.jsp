@@ -24,4 +24,10 @@
 		<td>${dto.cnt }</td>
 	</tr>
 	</c:forEach>
+	
+	<tr>
+		<td colspan="5" align="right">
+			<a href="<c:url value="/board/InsertForm"/>">글쓰기</a>
+		</td>
+	</tr>
 </table>

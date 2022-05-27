@@ -1,6 +1,7 @@
 package board_p;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,9 +20,14 @@ public class F_Controller extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
+	ArrayList<String> nonClass;
+	
     public F_Controller() {
         super();
-        // TODO Auto-generated constructor stub
+        nonClass = new ArrayList<String>();
+        nonClass.add("InsertForm");
+        nonClass.add("DeleteForm");
     }
 
 	/**
@@ -35,22 +41,24 @@ public class F_Controller extends HttpServlet {
 		String serviceStr = request.getRequestURI().substring(
 				(request.getContextPath()+"/board/").length()
 				);
-		try {
-			BoardService service =
-					(BoardService)Class.forName("board_p.service_p.Board"+serviceStr).newInstance();
-			
-			service.execute(request, response);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+		if(nonClass.contains(serviceStr)) {
+			request.setAttribute("mainUrl", serviceStr);
+		}else {
+			try {
+				BoardService service =
+						(BoardService)Class.forName("board_p.service_p.Board"+serviceStr).newInstance();
+				
+				service.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
 		//System.out.println("doGet() 왔다감");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/bbb_view/template.jsp");
 		
 		dispatcher.forward(request, response);
-		
 	}
 
 	/**

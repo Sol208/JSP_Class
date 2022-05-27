@@ -6,23 +6,33 @@
 <table border="">
 	<tr>
 		<td>id</td><td>${dto.id }</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td>제목</td><td>${dto.title }</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td>작성자</td><td>${dto.pname }</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td>작성일</td>
 		<td>
 		<fmt:formatDate value = "${dto.reg_date }" pattern="yy-MM-dd HH:mm:ss"/>
 		</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td>조회수</td><td>${dto.cnt }</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td>내용</td><td>${dto.content }</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td>파일</td><td>${dto.upfile }</td>
 	</tr>
-	
-	
-
+	<tr>
+		<td colspan="5" align="right">
+			<a href="<c:url value="/board/List"/>">목록으로</a>
+			<a href="<c:url value="/board/ModifyForm?id=${dto.id }"/>">수정</a>
+			<a href="<c:url value="/board/DeleteForm?id=${dto.id }"/>">삭제</a>
+		</td>
+	</tr>
 </table>
