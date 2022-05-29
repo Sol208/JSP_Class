@@ -20,7 +20,6 @@ public class SchoolDAO {
 	
 	public SchoolDAO() {
 		try {
-			// 요부분 다시 확인 해야할듯함***************************************
 			Context context = new InitialContext();
 			DataSource ds = (DataSource) context.lookup("java:comp/env/school_db");
 			conn = ds.getConnection();
