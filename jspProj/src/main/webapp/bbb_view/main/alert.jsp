@@ -4,5 +4,5 @@
 
 <script>
 alert("${msg}")
-location.href = "<c:url value="/board/${goUrl}"/>";
+location.href = "<c:url value="/board/${goUrl }"/>";
 </script>

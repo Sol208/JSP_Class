@@ -28,12 +28,31 @@ public class BoardDAO {
 		}
 	}
 	
-	public ArrayList<BoardDTO> list(){
-		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
-		sql = "select * from board";
+	public int totalCnt(){		
+		sql = "select count(*) from board";
 		
 		try {
 			ptmt = con.prepareStatement(sql);
+			rs = ptmt.executeQuery();
+	
+			// 1개만 찾으면 되니까 if문으로
+			if(rs.next()) {				
+				return rs.getInt(1);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public ArrayList<BoardDTO> list(int start, int limit){
+		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
+		sql = "select * from board order by id desc limit ?, ?";
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1, start);
+			ptmt.setInt(2, limit);
 			rs = ptmt.executeQuery();
 			
 			while(rs.next()) {

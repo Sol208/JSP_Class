@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<a href="<c:url value="/board/Detail?id=${dto.id }"/>">뒤로</a>
+				<a href="<c:url value="/board/Detail?id=${dto.id }&page=${nowPage }"/>">뒤로</a>
 				<input type="reset" name="취소" />
 				<input type="submit" name="수정" />
 			</td>

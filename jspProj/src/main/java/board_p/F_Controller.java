@@ -42,6 +42,14 @@ public class F_Controller extends HttpServlet {
 				(request.getContextPath()+"/board/").length()
 				);
 		
+		int page = 1;
+		
+		if(request.getParameter("page")!=null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		request.setAttribute("nowPage", page);
+		
 		if(nonClass.contains(serviceStr)) {
 			request.setAttribute("mainUrl", serviceStr);
 		}else {
@@ -55,10 +63,13 @@ public class F_Controller extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		//System.out.println("doGet() 왔다감");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/bbb_view/template.jsp");
 		
-		dispatcher.forward(request, response);
+		if(!serviceStr.equals("FileDown")) {
+			//System.out.println("doGet() 왔다감");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/bbb_view/template.jsp");
+			
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

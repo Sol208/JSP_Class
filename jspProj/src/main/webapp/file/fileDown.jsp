@@ -12,8 +12,8 @@
 	out.clear();
 	out = pageContext.pushBody();
 	
-	String path = request.getRealPath("fff");
-	path = "C:\\jsp_work\\jspProj\\src\\main\\webapp\\fff";
+	String path = request.getRealPath("bbb_fff");
+	path = "C:\\jsp_work\\jspProj\\src\\main\\webapp\\bbb_fff";
 	path += "\\asdf.docx";
 	
 	FileInputStream fis = new FileInputStream(path);
